@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Student Score Card Details</title>
+<script type = "text/javascript">
+    function scoreCardCalulate()
+	{
+		var studentName,sub1,sub2,sub3,sub4,average = 0,total = 0, result = "",grade = "";
+		studentName = document.studentScoreCardform.studentName.value;
+		sub1 = parseInt(document.studentScoreCardform.mathematics.value);
+		sub2 = parseInt(document.studentScoreCardform.physics.value);
+		sub3 = parseInt(document.studentScoreCardform.chemistry.value);
+		if (studentName = ""){
+			alert("Please enter Student Name");
+			return false;
+		}
+		
+		/*if (sub1 = null || sub2 = null || sub = null){
+			alert("Please enter Subject Marks for each Subject Displayed.");
+			return false;
+		}*/
+		
+		total = sub1+sub2+sub3;
+		
+		average = total/3;
+		if( sub1 < 35 || sub2 < 35 || sub3 < 35)
+		{
+			result = "fail";
+			grade = "D";
+		}
+		else if(average >= 75)
+		{
+			result = "Distinction";
+			grade = "A+";
+		}
+		else if(average >= 60 && average < 75)
+		{
+			result = "First class";
+			grade = "A";
+		}
+		else if(average >= 50 && average < 60)
+		{
+			result = "Second class";
+			grade = "B";
+		}
+		else if(average >=35 && average < 50)
+		{
+			result = "Pass class";
+			grade = "C";
+		}
+		else  if (average < 35)
+		{
+			result = "Fail";
+			Grade = "D";
+		}
+		document.studentScoreCardform.result.value = result;
+		document.studentScoreCardform.grade.value = grade;
+		document.studentScoreCardform.total.value = total;
+		document.studentScoreCardform.average.value = average;
+		
+	}
+	</script>
+</head>
+<body>	
+	<center><h2>Student Score Card Details</h2>
+	<form name = "studentScoreCardform">
+        <table border = "1">
+            <tr>
+                <td> Student Name</td>
+                <td><input type = "text" name = "studentName" required></td>
+            </tr>
+            <tr>
+                <td colspan = "2" align = "center">Subject Marks</td>
+            </tr>
+            <tr>
+                <td>Mathematics</td>
+                <td><input type = "text" name = "mathematics" required></td>
+            </tr>
+            <tr>
+                <td>Physics</td>
+                <td><input type = "text" name = "physics" required></td>
+            </tr>
+            <tr>
+                <td>Chemistry</td>
+                <td><input type = "text" name = "chemistry" required></td>
+            </tr>
+            <tr>
+                <td colspan = "2" align = "center"><input type = "button"   onclick = "scoreCardCalulate()" value = "Display Score Card" /></td>
+            </tr>            
+            <tr>
+                <td>Total</td>
+                <td><input type = "text" name = "total"/></td>
+
+            </tr>
+            <tr>
+                <td>Average</td>
+                <td><input type = "text" name = "average" /></td>
+            </tr>
+            <tr>
+                <td>Result</td>
+                <td><input type = "text" name = "result" /></td>
+            </tr>
+            <tr>
+                <td>Grade</td>
+                <td><input type = "text" name = "grade"/></td>
+            </tr>
+
+        </table>
+    </form>
+</body>
+</html>
